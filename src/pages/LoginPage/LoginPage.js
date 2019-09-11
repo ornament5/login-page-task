@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
+import './LoginPage.scss';
 
 class LoginPage extends Component {
     constructor(props) {
@@ -38,7 +40,7 @@ class LoginPage extends Component {
     formSubmittedHandler = (e) => {
         e.preventDefault();
         console.log(
-        `===Form submitted==== 
+        `===Form submitted=== 
         email:${this.state.loginForm.email.value}
         pass: ${this.state.loginForm.password.value}
         rememberUser: ${this.state.loginForm.rememberUser.isChecked}`);
@@ -52,24 +54,27 @@ class LoginPage extends Component {
                  config:this.state.loginForm[formControl]
              });
          }
-         return (
-             <div>
-                 <div><h1>Log into your account</h1></div>
-                 <div>
-                    <form onSubmit={this.formSubmittedHandler}>
-                        {formControls.map( formCtrl => (
-                            <Input 
-                                key={formCtrl.id} 
-                                changed={(e) => this.inputChangedHandler(e, formCtrl.id)}
-                                {...formCtrl.config}/>
-                        ))}
-                        <Button>Login</Button>  
-                    </form>
-                 </div>
-                 <div>
-                     <a href='#'>Reset your login credentials</a>
-                 </div>
-             </div>
+         return (            
+            <div className='page'>                
+                <form onSubmit={this.formSubmittedHandler} className='form'>
+                    <div className='form__heading'>
+                        <h1 className='form__title'>Log into your account</h1>
+                    </div>
+                    {formControls.map( formCtrl => (
+                            <div className='form__item' key={formCtrl.id}>
+                                <Input                                 
+                                    changed={(e) => this.inputChangedHandler(e, formCtrl.id)}
+                                    {...formCtrl.config}/>
+                            </div>
+                    ))}
+                    <div className='form__btn'>
+                        <Button>Login</Button>
+                    </div>
+                    <div className='form__footer'>
+                        <a href='#' className='form__link from__link--centered'>Reset your login credentials</a>
+                    </div>  
+                </form>
+            </div>
          );
      }
 }

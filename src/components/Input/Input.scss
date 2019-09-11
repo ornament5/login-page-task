@@ -1,0 +1,27 @@
+@import '../../shared/variables';
+
+.form__text-input {
+    width:100%;
+    font-size: $text-font-size;
+    line-height: 3.35em;
+    border-radius: 30px;
+    padding: 0 1.67em;
+    border: 1px solid $input-border-color;
+    color:$primary-text-color;
+    caret-color: $tertiary-text-color;
+    &::placeholder {
+        color:inherit;
+    }
+    outline: none;
+    &:focus,
+    &:active {
+        border-color: $tertiary-text-color;
+    }
+}
+
+
+
+.form__checkbox-label {
+    font-size: $text-font-size;
+    font-weight: bold;
+}

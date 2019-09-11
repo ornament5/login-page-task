@@ -1,0 +1,15 @@
+@import '../../shared/variables';
+
+.btn {
+    font-size: $text-font-size;
+    font-weight: bold;
+    line-height: 3.35em;
+    padding: 0 4em;
+    border-radius: 30px;
+    color:$secondary-text-color;
+    background-color: $secondary-background-color;
+    border:none;
+    outline:none;
+    cursor: pointer;
+
+}

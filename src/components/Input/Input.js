@@ -1,29 +1,27 @@
 import React from 'react';
+import './Input.scss';
 
 const Input =  (props) => {
     let inputElement = null;
     switch (props.type) {
         case ('email'):
             inputElement = (
-                <div>
-                    <input type='email' value={props.value} placeholder={props.placeholder} onChange={props.changed}/>
-                </div>
+                <input type='email' className='form__text-input' value={props.value} placeholder={props.placeholder} name='email' onChange={props.changed} />
             );
             break;
         case ('password'):
-                inputElement = (
-                    <div>
-                        <input type='password' value={props.value} placeholder={props.placeholder} onChange={props.changed}/>
-                    </div>
-                );
+            inputElement = (
+                <input type='password' className='form__text-input' value={props.value} placeholder={props.placeholder} name='password' onChange={props.changed} />
+            );
             break;
         case ('checkbox'):
-                inputElement = (
-                    <div>                        
-                        <input type='checkbox' checked={props.isChecked} onChange={props.changed} id='remember-user'/>
-                        <label htmlFor='remember-user'>{props.label}</label>
-                    </div>
-                );
+            inputElement = (
+                <div className='form__checkbox-input form__checkbox-input--left'>
+                    <input type='checkbox' className='form__checkbox-field' checked={props.isChecked} onChange={props.changed} name='rememberUser' id='remember-user'/>
+                    <label htmlFor='remember-user' className='form__checkbox-label'>{props.label}</label>
+                </div>
+            );  
+            
         break;    
     }
 
