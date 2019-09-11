@@ -16,7 +16,7 @@ const Input =  (props) => {
             break;
         case ('checkbox'):
             inputElement = (
-                <div className='form__checkbox-input form__checkbox-input--left'>
+                <div className='form__checkbox-input'>
                     <input type='checkbox' className='form__checkbox-field' checked={props.isChecked} onChange={props.changed} name='rememberUser' id='remember-user'/>
                     <label htmlFor='remember-user' className='form__checkbox-label'>{props.label}</label>
                 </div>

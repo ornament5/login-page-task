@@ -71,7 +71,7 @@ class LoginPage extends Component {
                         <Button>Login</Button>
                     </div>
                     <div className='form__footer'>
-                        <a href='#' className='form__link from__link--centered'>Reset your login credentials</a>
+                        <a href='#' className='form__link'>Reset your login credentials</a>
                     </div>  
                 </form>
             </div>

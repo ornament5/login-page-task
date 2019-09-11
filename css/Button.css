@@ -1,13 +1,23 @@
 .btn {
-  font-size: 18px;
+  font-size: 22px;
+  font-family: inherit;
   font-weight: bold;
-  line-height: 3.35em;
-  padding: 0 4em;
-  border-radius: 30px;
+  line-height: 2.72727em;
+  padding: 0 3.27273em;
+  border-radius: 1.36364em;
   color: #ffffff;
   background-color: #100b5f;
   border: none;
   outline: none;
   cursor: pointer;
+}
+
+.btn:hover, .btn:focus {
+  background-color: #1c13a6;
+}
+
+.btn:active {
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
 }
 /*# sourceMappingURL=Button.css.map */
