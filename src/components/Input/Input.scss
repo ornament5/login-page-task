@@ -1,63 +1,66 @@
 @import '../../shared/variables';
 
-.form__text-input {
+.input {
     width:100%;
     font-size: $text-font-size;
-    font-family: inherit;
-    line-height: 3.35em;
-    border-radius: (30px / $text-font-size) * 1em;
-    padding: 0 (30px / $text-font-size) * 1em;
-    border: 1px solid $input-border-color;
+    font-family: inherit;    
     color:$primary-text-color;
-    caret-color: $tertiary-text-color;
-    &::placeholder {
-        color:inherit;
-    }
     outline: none;
-    &:focus,
-    &:active {
-        border-color: $tertiary-text-color;
+    &--text {
+        line-height: 3.35em;
+        border: 1px solid $input-border-color;
+        border-radius: (30px / $text-font-size) * 1em;
+        padding: 0 (30px / $text-font-size) * 1em;
+        caret-color: $tertiary-text-color; 
+        &::placeholder {
+            color:inherit;
+        }    
+        &:focus,
+        &:active {
+            border-color: $tertiary-text-color;
+        }
     }
-}
+    &--checkbox {
+        display: flex;
+        align-items: flex-end;
 
-.form__checkbox-input {
-    display: flex;
-    align-items: flex-end;
-}
-
-.form__checkbox-label {
-    font-size: $text-font-size;
-    font-weight: bold;
-    line-height:(24px / $text-font-size) * 1em;
-}
-
-.form__checkbox-field {
-    appearance: none;
-    height: (24px / $text-font-size) * 1em;
-    width: (24px / $text-font-size) * 1em;
-    position: relative;
-    font-size: inherit;
-    margin-right:(10px / $text-font-size) * 1em;
-    outline:none;
-    &::before {
-        content:"";
-        background-color: $tertiary-background-color;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        border:1px solid $input-border-color;
-        border-radius: (4px / $text-font-size) * 1em;;        
-    }
-    &:focus::before,
-    &:active {
-        border-color: $tertiary-text-color;
-    }
-    &:checked::after {
-        content:url('./checkmark.png');
-        position: absolute;
-        width:(24px / $text-font-size) * 1em;
-        height:(24px / $text-font-size) * 1em;
-        padding: 3px 4px 0px;
+        &__label {
+            font-weight: bold;
+            line-height:(24px / $text-font-size) * 1em;
+        }
         
+        &__field {
+            appearance: none;
+            height: (24px / $text-font-size) * 1em;
+            width: (24px / $text-font-size) * 1em;
+            position: relative;
+            font-size: inherit;
+            margin-right:(10px / $text-font-size) * 1em;
+            outline:inherit;
+            &:hover {
+                cursor: pointer;
+            }
+            &::before {
+                content:"";
+                background-color: $tertiary-background-color;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                border:1px solid $input-border-color;
+                border-radius: (4px / $text-font-size) * 1em;;        
+            }
+            &:focus::before {
+                border-color: $tertiary-text-color;
+            }
+            &:checked::after {
+                content:url('./checkmark.png');
+                position: absolute;
+                width:(24px / $text-font-size) * 1em;
+                height:(24px / $text-font-size) * 1em;
+                top:3px;
+                left:4px;        
+            }
+        }
     }
 }
+

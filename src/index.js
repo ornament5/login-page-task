@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import LoginPage from './pages/LoginPage/LoginPage';
+import './index.scss';
+import LoginPage from './pages/login-page/login-page';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<LoginPage />, document.getElementById('root'));

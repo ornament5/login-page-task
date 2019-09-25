@@ -1,10 +1,12 @@
 import React from 'react';
 import './Button.scss';
 
-const Button = (props) => (
-    <button onClick={props.clicked} className='btn'>
-        {props.children}
-    </button>
-);
+const Button = ({ clicked, children }) => {
+     return ( 
+        <button onClick={clicked} className='button'>
+            {children}
+        </button>
+    );
+};
 
 export default Button;

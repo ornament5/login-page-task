@@ -1,6 +1,6 @@
 @import '../../shared/variables';
 
-.btn {
+.button {
     font-size: $button-font-size;
     font-family: inherit;
     font-weight: bold;
@@ -16,8 +16,4 @@
     &:focus {
         background-color: lighten($secondary-background-color,15.5);
     }
-    &:active {
-        transform: scale(1.02);
-    }
-
 }
