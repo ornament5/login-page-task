@@ -1,32 +1,20 @@
 import React from 'react';
-import './Input.scss';
+import './input.scss';
 
-const Input =  ({ type, value, handleChange, isChecked = null}) => {
+const Input = ({ type, value, handleChange, placeholder = null, isChecked = null}) => {
     let inputElement = null;
-    switch (type) {
-        case ('email'):
-            inputElement = (
-                <input type='email' className='input input--text' value={value} placeholder='Email address' name='email' onChange={handleChange} />
-            );
-            break;
-        case ('password'):
-            inputElement = (
-                <input type='password' className='input input--text' value={value} placeholder='Password' name='password' onChange={handleChange} />
-            );
-            break;
-        case ('checkbox'):
-            inputElement = (
-                <div className='input input--checkbox'>
-                    <input type='checkbox' className='input--checkbox__field' checked={isChecked} onChange={handleChange} name='rememberUser' id='remember-user'/>
-                    <label htmlFor='remember-user' className='input--checkbox__label'>Remember me</label>
-                </div>
-            );            
-        break; 
-        default:
-            inputElement = (
-                <input type='text' className='input input--text' value={value} name='text' onChange={handleChange} />
-            );
-             
+
+    if (type === 'email' || type === 'password' ) {
+        inputElement = (
+            <input type={type} className='input input--text' id={type} value={value} placeholder={placeholder} name={type} onChange={handleChange}  />
+        );
+    } else if (type === 'checkbox') {
+        inputElement = (
+            <div className='input input--checkbox'>
+                <input type={type} className='input--checkbox__field' id='remember-user' value={value} checked={isChecked} name='rememberUser' onChange={handleChange} />
+                <label htmlFor='remember-user' className='input--checkbox__label'>Remember me</label>
+            </div>
+        );   
     }
 
     return inputElement;

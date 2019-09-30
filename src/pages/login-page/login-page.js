@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import Input from '../../components/Input/Input';
-import Button from '../../components/Button/Button';
+import Input from '../../components/input/input';
+import Button from '../../components/button/button';
 import './login-page.scss';
 
 class LoginPage extends Component {
@@ -41,22 +41,25 @@ class LoginPage extends Component {
                             <Input                                 
                                 handleChange={(e) => this.inputChangedHandler(e, 'emailAddress')}
                                 type='email'
-                                value={this.state.emailAddress}/>
+                                value={this.state.emailAddress}
+                                placeholder='Email address'/>
                         </div>
                         <div className='login-page__form-item'>
                             <Input                                 
                                 handleChange={(e) => this.inputChangedHandler(e, 'password')}
                                 type='password'
-                                value={this.state.password}/>
+                                value={this.state.password}
+                                placeholder='Password'/>
                         </div>
                         <div className={'login-page__form-item login-page__form-item--big-margin-bottom'}>
                             <Input                                 
                                 handleChange={(e) => this.inputChangedHandler(e, 'rememberUser')}
                                 type='checkbox'
-                                isChecked={this.state.rememberUser}/>
+                                isChecked={this.state.rememberUser}
+                                value={true}/>
                         </div>
                     <div className='login-page__btn'>
-                        <Button>Login</Button>
+                        <Button>Login</Button> 
                     </div>
                     <div className='login-page__footer'>
                         <a href='#' className='login-page__link'>Reset your login credentials</a>
