@@ -8,16 +8,16 @@ class LoginPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            emailAddress: '',
-            password:'',
-            rememberUser:false
+            'login-email': '',
+            'login-password':'',
+            'login-checkbox':false
         }
     } 
-    inputChangedHandler = (e, formField) => {
-        if(formField === 'rememberUser') {
-            this.setState({[formField]:e.target.checked});
+    inputChangedHandler = (e) =>  {
+        if(e.target.type === 'checkbox') {
+            this.setState({[e.target.name]:e.target.checked});
         } else {
-            this.setState({[formField]:e.target.value});
+            this.setState({[e.target.name]:e.target.value});
         } 
     }
 
@@ -25,40 +25,42 @@ class LoginPage extends Component {
         e.preventDefault();
         console.log(
         `===Form submitted=== 
-        email:${this.state.emailAddress}
-        pass: ${this.state.password}
-        rememberUser: ${this.state.rememberUser}`);
+        email:${this.state['login-email']}
+        pass: ${this.state['login-password']}
+        rememberUser: ${this.state['login-checkbox']}`);
     }
 
      render() {
          return (            
             <div className='login-page'>                
-                <form onSubmit={this.formSubmittedHandler} className='login-page__form'>
+                <form onSubmit={this.formSubmittedHandler} className='login-page__form' noValidate>
                     <div className='login-page__heading'>
                         <h1 className='login-page__title'>Log into your account</h1>
                     </div>
                         <div className='login-page__form-item'>
                             <Input                                 
-                                handleChange={(e) => this.inputChangedHandler(e, 'emailAddress')}
+                                handleChange={this.inputChangedHandler}
                                 type='email'
-                                value={this.state.emailAddress}
-                                placeholder='Email address'/>
+                                value={this.state['login-email']}
+                                placeholder='Email address'
+                                name='login-email'/>
                         </div>
                         <div className='login-page__form-item'>
                             <Input                                 
-                                handleChange={(e) => this.inputChangedHandler(e, 'password')}
+                                handleChange={this.inputChangedHandler}
                                 type='password'
-                                value={this.state.password}
-                                placeholder='Password'/>
+                                value={this.state['login-password']}
+                                placeholder='Password' 
+                                name='login-password'/>
                         </div>
                         <div className={'login-page__form-item login-page__form-item--big-margin-bottom'}>
                             <Input                                 
-                                handleChange={(e) => this.inputChangedHandler(e, 'rememberUser')}
+                                handleChange={this.inputChangedHandler}
                                 type='checkbox'
-                                isChecked={this.state.rememberUser}
-                                value={true}/>
+                                isChecked={this.state['login-checkbox']}
+                                name='login-checkbox'/>
                         </div>
-                    <div className='login-page__btn'>
+                    <div className='login-page__button'>
                         <Button>Login</Button> 
                     </div>
                     <div className='login-page__footer'>
