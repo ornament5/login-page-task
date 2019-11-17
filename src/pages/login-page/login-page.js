@@ -10,7 +10,8 @@ class LoginPage extends Component {
         this.state = {
             'login-email': '',
             'login-password':'',
-            'login-checkbox':false
+            'login-checkbox':false,
+            isLoading:false
         }
     } 
     inputChangedHandler = (e) =>  {
@@ -23,14 +24,50 @@ class LoginPage extends Component {
 
     formSubmittedHandler = (e) => {
         e.preventDefault();
-        console.log(
-        `===Form submitted=== 
-        email:${this.state['login-email']}
-        pass: ${this.state['login-password']}
-        rememberUser: ${this.state['login-checkbox']}`);
+        this.setState({isLoading:true});
+        let formData = {
+            email: this.state['login-email'],
+            password: this.state['login-password'],
+            shouldRemember: this.state['login-checkbox']
+        };
+
+        this.fetchData(formData).then((response)=>{
+                    console.log(response);
+                    this.setState({            
+                        'login-email': '',
+                        'login-password':'',
+                        'login-checkbox':false,
+                        isLoading:false
+                    })
+                }
+            );      
     }
 
+    fetchData = (formData) => {
+        return fetch('http://localhost:3001/login/', {
+            method:'POST',
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(formData)
+        }).then( response => {
+            return response.json().then( responseData => {
+                if (response.ok) {
+                    if (!responseData.userName) {
+                        return '======empty======';
+                    } else {
+                        return responseData;
+                    }
+                } else {
+                    return responseData.errorMessage;
+                }
+            });
+        }, error => error)
+    }
+    
      render() {
+        const buttonText = this.state.isLoading ? 'Loading...' : 'Login';
+
          return (            
             <div className='login-page'>                
                 <form onSubmit={this.formSubmittedHandler} className='login-page__form' noValidate>
@@ -61,7 +98,7 @@ class LoginPage extends Component {
                                 name='login-checkbox'/>
                         </div>
                     <div className='login-page__button'>
-                        <Button>Login</Button> 
+                        <Button disabled={this.state.isLoading}>{buttonText}</Button> 
                     </div>
                     <div className='login-page__footer'>
                         <a href='#' className='login-page__link'>Reset your login credentials</a>
@@ -69,7 +106,6 @@ class LoginPage extends Component {
                 </form>
             </div>
          );
-     }
+    }
 }
-
 export default LoginPage;
