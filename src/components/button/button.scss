@@ -16,4 +16,11 @@
     &:focus {
         background-color: lighten($secondary-background-color,15.5);
     }
+
+    &:disabled {
+        background-color: $secondary-background-color-2;
+        cursor: not-allowed;
+    }
 }
+
+
