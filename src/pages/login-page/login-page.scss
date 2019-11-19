@@ -12,7 +12,7 @@
     font-family:$font-family;
 
     &__form {
-        width:(462px/ $text-font-size) * 1em ;
+        width:462px ;
         font-size: $text-font-size;
     }
 
@@ -34,6 +34,10 @@
         }
     }
 
+    &__alert-box {
+        margin-top:-1em;
+    }
+
     &__button {
         text-align:center;
     }
@@ -51,10 +55,3 @@
         }
     }
 }
-
-
-
-
-
-
-
