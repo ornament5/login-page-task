@@ -46,7 +46,7 @@ class LoginPage extends Component {
                     alertBoxText='Something went wrong during the authentication process. Please try signing in again.';
                 } else {
                     alertBoxType='error';
-                    alertBoxText=response.errorMessage;                    
+                    alertBoxText=response.errorMessage || response.stack;                    
                 }
                 this.setState({            
                     'login-email': '',
@@ -73,10 +73,16 @@ class LoginPage extends Component {
         }, error => error)
     }
     
-     render() {
+    render() {
         const buttonText = this.state.isLoading ? <Loader/> : 'Login';
-        const alertBox = this.state.showAlertBox ? <AlertBox variant={this.state.alertBoxType} 
-                                                             text={this.state.alertBoxText}/> : null;
+        let alertBox = null;
+        if (this.state.showAlertBox) {
+            alertBox = <div className='login-page__alert-box login-page__form-item--big-margin-bottom'>
+                            <AlertBox variant={this.state.alertBoxType} 
+                                      text={this.state.alertBoxText}/>
+                       </div>
+        }
+
         return (            
             <div className='login-page'>                
                 <form onSubmit={this.formSubmittedHandler} className='login-page__form' noValidate>
@@ -99,16 +105,14 @@ class LoginPage extends Component {
                             placeholder='Password' 
                             name='login-password'/>
                     </div>
-                    <div className={'login-page__form-item login-page__form-item--big-margin-bottom'}>
+                    <div className={'login-page__form-item--big-margin-bottom'}>
                         <Input                                 
                             handleChange={this.inputChangedHandler}
                             type='checkbox'
                             isChecked={this.state['login-checkbox']}
                             name='login-checkbox'/>
                     </div>
-                    <div className='login-page__alert-box'>
-                        {alertBox}
-                    </div>
+                    {alertBox}
                     <div className='login-page__button'>
                         <Button disabled={this.state.isLoading}>{buttonText}</Button> 
                     </div>
