@@ -44,7 +44,7 @@ class LoginPage extends Component {
                 if(response.isSuccess && !response.userName) {
                     alertBoxType='warning';
                     alertBoxText='Something went wrong during the authentication process. Please try signing in again.';
-                } else {
+                } else if (!response.isSuccess) {
                     alertBoxType='error';
                     alertBoxText=response.errorMessage || response.stack;                    
                 }
